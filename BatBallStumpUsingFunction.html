@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BatBallStumpProject</title>
+    <style>
+        body{
+            text-align: center;
+        }
+       #Buttons{
+       height: 150px;
+       width: 870px;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        margin-left: 63px;
+        margin-top: 75px;
+       }
+       #Bat{
+        background-color: white;
+        border: 1px black solid;
+        background-image: url(Images/BatPng.webp);
+        background-size: contain;
+        background-repeat: no-repeat;
+         border: 5px rgb(224, 221, 221) solid;
+        border-radius: 30px;
+        
+       }
+       
+       #Ball{
+        height: 50px;
+        margin-top: 20px;
+        background-color: white;
+        background-position: center;
+        border: 1px black solid;
+        background-image: url(Images/cricket-ball-isolated_53876-17944.avif);
+        background-size: contain;
+        background-repeat: no-repeat;
+         border: 5px rgb(224, 221, 221) solid;
+        border-radius: 30px;
+        
+       }
+       
+       #stump{
+       background-color: white;
+        border: 1px black solid;
+        background-image: url(Images/StumpPng.jpg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 5px rgb(224, 221, 221) solid;
+        border-radius: 30px;
+        
+
+         
+
+       }
+
+       
+       
+        .options{
+            height: 80px;
+            width: 60px;
+            cursor: pointer;
+            margin: 0px 40px;
+           
+        }
+        #Reset{
+            background-image: url(Images/refresh-icon-reload-icon-rotation-arrows-symbol-3d-icon-illustration-png.webp) ;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 60px;
+            width: 50px;
+            background-position: center;
+            border-radius: 30px;
+        
+             border: 5px rgb(224, 221, 221) solid;
+            
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>
+        Bat Ball Stump Game
+    </h1>
+    <div id="Buttons" >
+        
+        <button class="options" id="Bat" onclick="
+             num = Math.random()*3;
+             setComputerChoice();
+             yourChoice = 'Bat';
+             checkReasult();
+              console.log(score);
+              
+             score.display(yourChoice,computerChoice,result);
+            
+            "></button>
+        <button class="options" id="Ball" onclick="
+              num = Math.random()*3;
+             setComputerChoice();
+        yourChoice= 'Ball';
+        checkReasult();
+        console.log(score);
+      
+        score.display(yourChoice,computerChoice,result);
+            
+            "></button>
+        <button class="options" id="stump" onclick="
+              num = Math.random()*3;
+             setComputerChoice();
+        yourChoice= 'Stump';
+        checkReasult();
+         console.log(score);
+        
+        score.display(yourChoice,computerChoice,result);
+            
+            "></button>
+           
+    </div>
+    <div>
+         <button id="Reset"
+            onclick="
+             score.win = 0;
+             score.loose = 0;
+             score.tie = 0;
+             localStorage.setItem('Score',JSON.stringify(score));
+                document.querySelector('#score').innerText = `
+                    ------- Results Below ------- 
+                         Win = ${score.win} 
+                         loose = ${score.loose}
+                         drawn = ${score.tie} ` ;
+                document.querySelector('#userChoice').innerText = ` `;
+                document.querySelector('#computerChoice').innerText = ` `;
+                document.querySelector('#result').innerText = ` `;
+                
+             
+             alert('Score has been reset');
+             
+            "
+            >
+                
+            </button>
+    </div>
+    <h3 id="userChoice"></h3>
+    <h3 id="computerChoice"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+    
+    <script>
+       let yourChoice;
+       let score = {
+            win : 0,
+            loose : 0,
+            tie : 0,
+
+        };
+       let computerChoice;
+       let num;
+       let result;
+        let scoreStr = localStorage.getItem('Score');
+         if(scoreStr){
+            score = JSON.parse(scoreStr);
+         }
+         else {
+         score = {
+            win : 0,
+            loose : 0,
+            tie : 0,
+
+        };
+            
+    }
+    score.display = function(yourChoice,computerChoice,result) {
+                // return `
+                //         Your choice is : ${yourChoice} 
+                //         Computer choice is : ${computerChoice}
+                //         ${result}
+                //     --------- Results below ----------
+                //         Win = ${this.win} 
+                //         loose = ${this.loose}
+                //         drawn = ${this.tie}`;
+
+            document.querySelector('#userChoice').innerText = `You have chosen ${yourChoice}`;
+            document.querySelector('#computerChoice').innerText = `Computer have chosen ${computerChoice}`;
+            document.querySelector('#result').innerText = result;
+            document.querySelector('#score').innerText = `
+                    ------- Results Below ------- 
+                         Win = ${score.win} 
+                         lose = ${score.loose}
+                         drawn = ${score.tie} `;
+
+            }
+
+        
+        localStorage.setItem('Score',JSON.stringify(score));
+      
+       function setComputerChoice(){
+        if(num>0 && num<=1){
+            computerChoice='Bat';
+        }
+        else if(num>1 && num<=2){
+            computerChoice ='Ball';
+        }
+        else {
+            computerChoice='Stump';
+        }
+       }
+       function checkReasult(){
+        if(computerChoice === yourChoice){
+            result = 'It is a tie';
+            score.tie ++;
+        localStorage.setItem('Score',JSON.stringify(score));
+
+        }
+        else if(computerChoice === 'Bat'){
+            if(yourChoice==='Ball') {result ='Better luck next time!!';
+             score.loose++;
+              localStorage.setItem('Score',JSON.stringify(score));
+            }
+            else if(yourChoice==='Stump'){
+                 result = 'You won it!!';
+                 score.win++;
+                  localStorage.setItem('Score',JSON.stringify(score));
+            }
+            
+        }
+        else if(computerChoice === 'Ball'){
+            if(yourChoice==='Bat') {
+                result ='You won it!!';
+                score.win++;
+                 localStorage.setItem('Score',JSON.stringify(score));
+            }
+            else if(yourChoice==='Stump'){
+                 result = 'Better luck next time!!';
+                 score.loose++;
+                  localStorage.setItem('Score',JSON.stringify(score));
+            }
+
+        }
+        else {
+           if(yourChoice==='Ball') {
+            result ='You won it!!';
+            score.win++;
+             localStorage.setItem('Score',JSON.stringify(score));
+           }
+            else if(yourChoice==='Bat') {
+                result = 'Better luck next time!!';
+                score.loose++;
+                 localStorage.setItem('Score',JSON.stringify(score));
+            }
+ 
+        }
+       }
+
+      
+
+       
+    </script>
+</body>
+</html>
