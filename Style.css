@@ -1,0 +1,74 @@
+ body{
+            text-align: center;
+        }
+       #Buttons{
+       height: 150px;
+       width: 870px;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        margin-left: 63px;
+        margin-top: 75px;
+       }
+       #Bat{
+        background-color: white;
+        border: 1px black solid;
+        background-image: url(Images/BatPng.webp);
+        background-size: contain;
+        background-repeat: no-repeat;
+         border: 5px rgb(224, 221, 221) solid;
+        border-radius: 30px;
+        
+       }
+       
+       #Ball{
+        height: 50px;
+        margin-top: 20px;
+        background-color: white;
+        background-position: center;
+        border: 1px black solid;
+        background-image: url(Images/cricket-ball-isolated_53876-17944.avif);
+        background-size: contain;
+        background-repeat: no-repeat;
+         border: 5px rgb(224, 221, 221) solid;
+        border-radius: 30px;
+        
+       }
+       
+       #stump{
+       background-color: white;
+        border: 1px black solid;
+        background-image: url(Images/StumpPng.jpg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 5px rgb(224, 221, 221) solid;
+        border-radius: 30px;
+        
+
+         
+
+       }
+
+       
+       
+        .options{
+            height: 80px;
+            width: 60px;
+            cursor: pointer;
+            margin: 0px 40px;
+           
+        }
+        #Reset{
+            background-image: url(Images/refresh-icon-reload-icon-rotation-arrows-symbol-3d-icon-illustration-png.webp) ;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 60px;
+            width: 50px;
+            background-position: center;
+            border-radius: 30px;
+        
+             border: 5px rgb(224, 221, 221) solid;
+            
+        }
+        
