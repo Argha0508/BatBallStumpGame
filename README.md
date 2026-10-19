@@ -2,7 +2,7 @@
 An interactive cricket-inspired game built with HTML, CSS, and JavaScript. The project demonstrates DOM manipulation, event handling, and localStorage usage to track scores. Players can choose between Bat, Ball, or Stump, and compete against the computer in a fun, lightweight browser game.
 
 
-👉 Live Demo: Bat Ball Stump Game (argha0508.github.io in Bing)
+👉 Live Demo: Bat Ball Stump Game ((https://argha0508.github.io/BatBallStumpGame/))
 
 
 ✨ Features
